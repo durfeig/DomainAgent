@@ -1,0 +1,41 @@
+{
+  "name": "arbitrage-os",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Arbitrage OS — analyst agent for digital-asset arbitrage. Vertical 1: domain arbitrage. Analyst only: no auto-buy.",
+  "type": "module",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "scout": "tsx src/cli/scout.ts",
+    "decide": "tsx src/cli/decide.ts",
+    "digest": "tsx src/cli/digest.ts",
+    "import:namebio-keywords": "tsx src/cli/import-namebio-keywords.ts",
+    "export:schemas": "tsx src/cli/export-schemas.ts",
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "test:watch": "vitest"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.132.1",
+    "@supabase/supabase-js": "^2.117.3",
+    "fast-xml-parser": "^5.11.2",
+    "next": "^16.4.0",
+    "react": "^19.3.0",
+    "react-dom": "^19.3.0",
+    "zod": "^4.6.5"
+  },
+  "devDependencies": {
+    "@electric-sql/pglite": "^0.5.8",
+    "@types/node": "^22.10.0",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.2.0",
+    "tsx": "^4.23.15",
+    "typescript": "^5.9.3",
+    "vitest": "^5.0.3"
+  }
+}

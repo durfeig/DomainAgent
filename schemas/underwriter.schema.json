@@ -1,0 +1,402 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "properties": {
+    "domain": {
+      "type": "string"
+    },
+    "verdict": {
+      "type": "string",
+      "enum": [
+        "INVEST",
+        "WATCH",
+        "REJECT"
+      ]
+    },
+    "kill_reasons": {
+      "maxItems": 10,
+      "type": "array",
+      "items": {
+        "type": "string",
+        "maxLength": 200
+      },
+      "description": "Reasons this should NOT be bought. Empty only if none."
+    },
+    "component_scores": {
+      "type": "object",
+      "properties": {
+        "demand_evidence": {
+          "type": "object",
+          "properties": {
+            "score": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 100
+            },
+            "basis": {
+              "type": "string",
+              "enum": [
+                "FACT",
+                "ESTIMATE",
+                "INFERENCE"
+              ]
+            },
+            "rationale": {
+              "type": "string",
+              "maxLength": 400
+            }
+          },
+          "required": [
+            "score",
+            "basis",
+            "rationale"
+          ],
+          "additionalProperties": false
+        },
+        "historical_market": {
+          "type": "object",
+          "properties": {
+            "score": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 100
+            },
+            "basis": {
+              "type": "string",
+              "enum": [
+                "FACT",
+                "ESTIMATE",
+                "INFERENCE"
+              ]
+            },
+            "rationale": {
+              "type": "string",
+              "maxLength": 400
+            }
+          },
+          "required": [
+            "score",
+            "basis",
+            "rationale"
+          ],
+          "additionalProperties": false
+        },
+        "buyer_universe": {
+          "type": "object",
+          "properties": {
+            "score": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 100
+            },
+            "basis": {
+              "type": "string",
+              "enum": [
+                "FACT",
+                "ESTIMATE",
+                "INFERENCE"
+              ]
+            },
+            "rationale": {
+              "type": "string",
+              "maxLength": 400
+            }
+          },
+          "required": [
+            "score",
+            "basis",
+            "rationale"
+          ],
+          "additionalProperties": false
+        },
+        "brandability": {
+          "type": "object",
+          "properties": {
+            "score": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 100
+            },
+            "basis": {
+              "type": "string",
+              "enum": [
+                "FACT",
+                "ESTIMATE",
+                "INFERENCE"
+              ]
+            },
+            "rationale": {
+              "type": "string",
+              "maxLength": 400
+            }
+          },
+          "required": [
+            "score",
+            "basis",
+            "rationale"
+          ],
+          "additionalProperties": false
+        },
+        "trend_momentum": {
+          "type": "object",
+          "properties": {
+            "score": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 100
+            },
+            "basis": {
+              "type": "string",
+              "enum": [
+                "FACT",
+                "ESTIMATE",
+                "INFERENCE"
+              ]
+            },
+            "rationale": {
+              "type": "string",
+              "maxLength": 400
+            }
+          },
+          "required": [
+            "score",
+            "basis",
+            "rationale"
+          ],
+          "additionalProperties": false
+        },
+        "tld_quality": {
+          "type": "object",
+          "properties": {
+            "score": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 100
+            },
+            "basis": {
+              "type": "string",
+              "enum": [
+                "FACT",
+                "ESTIMATE",
+                "INFERENCE"
+              ]
+            },
+            "rationale": {
+              "type": "string",
+              "maxLength": 400
+            }
+          },
+          "required": [
+            "score",
+            "basis",
+            "rationale"
+          ],
+          "additionalProperties": false
+        },
+        "capital_efficiency": {
+          "type": "object",
+          "properties": {
+            "score": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 100
+            },
+            "basis": {
+              "type": "string",
+              "enum": [
+                "FACT",
+                "ESTIMATE",
+                "INFERENCE"
+              ]
+            },
+            "rationale": {
+              "type": "string",
+              "maxLength": 400
+            }
+          },
+          "required": [
+            "score",
+            "basis",
+            "rationale"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "required": [
+        "demand_evidence",
+        "historical_market",
+        "buyer_universe",
+        "brandability",
+        "trend_momentum",
+        "tld_quality",
+        "capital_efficiency"
+      ],
+      "additionalProperties": false
+    },
+    "confidence": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 100
+    },
+    "confidence_rationale": {
+      "type": "string",
+      "maxLength": 400
+    },
+    "trademark": {
+      "type": "object",
+      "properties": {
+        "risk": {
+          "type": "string",
+          "enum": [
+            "LOW",
+            "MEDIUM",
+            "HIGH"
+          ]
+        },
+        "rationale": {
+          "type": "string",
+          "maxLength": 300
+        }
+      },
+      "required": [
+        "risk",
+        "rationale"
+      ],
+      "additionalProperties": false
+    },
+    "thesis": {
+      "type": "string",
+      "maxLength": 600
+    },
+    "why_now": {
+      "type": "string",
+      "maxLength": 400
+    },
+    "risks": {
+      "minItems": 1,
+      "maxItems": 8,
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "risk": {
+            "type": "string",
+            "maxLength": 240
+          },
+          "severity": {
+            "type": "string",
+            "enum": [
+              "LOW",
+              "MEDIUM",
+              "HIGH"
+            ]
+          }
+        },
+        "required": [
+          "risk",
+          "severity"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "evidence": {
+      "maxItems": 12,
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "claim": {
+            "type": "string",
+            "maxLength": 300
+          },
+          "type": {
+            "type": "string",
+            "enum": [
+              "FACT",
+              "ESTIMATE",
+              "INFERENCE"
+            ]
+          },
+          "fact_ids": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Fact IDs (F#) from the fact sheet. Required for FACT claims."
+          }
+        },
+        "required": [
+          "claim",
+          "type",
+          "fact_ids"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "estimated_retail": {
+      "anyOf": [
+        {
+          "type": "object",
+          "properties": {
+            "low": {
+              "type": "number",
+              "minimum": 0
+            },
+            "base": {
+              "type": "number",
+              "minimum": 0
+            },
+            "high": {
+              "type": "number",
+              "minimum": 0
+            },
+            "currency": {
+              "type": "string",
+              "const": "USD"
+            },
+            "basis": {
+              "type": "string",
+              "maxLength": 300
+            }
+          },
+          "required": [
+            "low",
+            "base",
+            "high",
+            "currency",
+            "basis"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "description": "ESTIMATE of an end-user retail price. null if there is not enough evidence."
+    },
+    "potential_buyer_categories": {
+      "maxItems": 8,
+      "type": "array",
+      "items": {
+        "type": "string",
+        "maxLength": 80
+      }
+    }
+  },
+  "required": [
+    "domain",
+    "verdict",
+    "kill_reasons",
+    "component_scores",
+    "confidence",
+    "confidence_rationale",
+    "trademark",
+    "thesis",
+    "why_now",
+    "risks",
+    "evidence",
+    "estimated_retail",
+    "potential_buyer_categories"
+  ],
+  "additionalProperties": false
+}

@@ -1,0 +1,116 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "properties": {
+    "concepts": {
+      "maxItems": 20,
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "minLength": 2,
+            "maxLength": 60,
+            "description": "Normalized generic commercial concept, lowercase, no company names"
+          },
+          "keywords": {
+            "minItems": 1,
+            "maxItems": 6,
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 2,
+              "maxLength": 24
+            },
+            "description": "Core single words of the concept, lowercase"
+          },
+          "description": {
+            "type": "string",
+            "maxLength": 300
+          },
+          "commercial_rationale": {
+            "type": "string",
+            "maxLength": 400,
+            "description": "Why someone might pay for a name around this concept"
+          },
+          "durability": {
+            "type": "string",
+            "enum": [
+              "DURABLE",
+              "HYPE",
+              "UNCLEAR"
+            ]
+          },
+          "durability_reason": {
+            "type": "string",
+            "maxLength": 300
+          },
+          "evidence_signal_ids": {
+            "minItems": 1,
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "IDs of the provided signals that support this concept. Only IDs from the input."
+          },
+          "merged_phrases": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Input phrases grouped into this concept"
+          },
+          "references_specific_company": {
+            "type": "boolean",
+            "description": "true if the concept is really about one company/product/trademark"
+          },
+          "confidence": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 100
+          }
+        },
+        "required": [
+          "name",
+          "keywords",
+          "description",
+          "commercial_rationale",
+          "durability",
+          "durability_reason",
+          "evidence_signal_ids",
+          "merged_phrases",
+          "references_specific_company",
+          "confidence"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "rejected_phrases": {
+      "maxItems": 80,
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "phrase": {
+            "type": "string"
+          },
+          "reason": {
+            "type": "string",
+            "maxLength": 160
+          }
+        },
+        "required": [
+          "phrase",
+          "reason"
+        ],
+        "additionalProperties": false
+      }
+    }
+  },
+  "required": [
+    "concepts",
+    "rejected_phrases"
+  ],
+  "additionalProperties": false
+}

@@ -1,0 +1,43 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "properties": {
+    "action": {
+      "type": "string",
+      "enum": [
+        "APPROVE",
+        "REJECT",
+        "WATCH",
+        "BUY"
+      ]
+    },
+    "reason": {
+      "default": "",
+      "type": "string",
+      "maxLength": 1000
+    },
+    "actor": {
+      "type": "string",
+      "maxLength": 60
+    },
+    "human_or_agent": {
+      "default": "human",
+      "type": "string",
+      "enum": [
+        "human",
+        "agent"
+      ]
+    },
+    "acquisition_cost": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 100000
+    }
+  },
+  "required": [
+    "action",
+    "reason",
+    "human_or_agent"
+  ],
+  "additionalProperties": false
+}

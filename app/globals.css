@@ -1,0 +1,48 @@
+:root {
+  --bg: #f7f7f5; --panel: #ffffff; --text: #1b1b1a; --muted: #6b6b66; --line: #e4e3df;
+  --good: #1f7a4d; --bad: #b3261e; --warn: #9a6700; --accent: #2d5bd7;
+}
+@media (prefers-color-scheme: dark) {
+  :root { --bg: #141413; --panel: #1d1d1b; --text: #ecebe6; --muted: #a09f99; --line: #33322f; --good: #5cc28f; --bad: #f2867e; --warn: #e3b341; --accent: #8aa8ff; }
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--text); font: 14px/1.5 ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif; }
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+.top { display: flex; gap: 20px; align-items: center; padding: 12px 20px; border-bottom: 1px solid var(--line); background: var(--panel); position: sticky; top: 0; }
+.top nav { display: flex; gap: 14px; flex: 1; }
+.brand { font-weight: 700; color: var(--text); }
+main { max-width: 1200px; margin: 0 auto; padding: 20px 16px 60px; }
+h1 { font-size: 20px; margin: 4px 0 16px; }
+h2 { font-size: 15px; margin: 24px 0 8px; }
+.cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 10px; }
+.card { background: var(--panel); border: 1px solid var(--line); border-radius: 8px; padding: 12px; }
+.card .v { font-size: 22px; font-weight: 700; font-variant-numeric: tabular-nums; }
+.card .k { color: var(--muted); font-size: 12px; }
+.tabs { display: flex; gap: 6px; margin: 18px 0 10px; flex-wrap: wrap; }
+.tabs a { padding: 4px 10px; border: 1px solid var(--line); border-radius: 999px; color: var(--text); background: var(--panel); }
+.tabs a.on { background: var(--text); color: var(--bg); }
+.tablewrap { overflow-x: auto; background: var(--panel); border: 1px solid var(--line); border-radius: 8px; }
+table { width: 100%; border-collapse: collapse; }
+th, td { text-align: left; padding: 8px 10px; border-bottom: 1px solid var(--line); vertical-align: top; }
+th { color: var(--muted); font-weight: 600; font-size: 12px; white-space: nowrap; }
+td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
+.pill { font-size: 12px; padding: 2px 8px; border-radius: 999px; border: 1px solid var(--line); color: var(--muted); white-space: nowrap; }
+.s-NEW { color: var(--accent); } .s-APPROVED, .s-BOUGHT { color: var(--good); } .s-REJECTED { color: var(--bad); } .s-WATCH { color: var(--warn); }
+.tm-HIGH { color: var(--bad); } .tm-MEDIUM { color: var(--warn); } .tm-LOW { color: var(--good); }
+.banner { padding: 8px 12px; border-radius: 8px; border: 1px solid var(--warn); color: var(--warn); margin: 8px 0; }
+.ok { padding: 8px 12px; border-radius: 8px; border: 1px solid var(--good); color: var(--good); margin: 8px 0; }
+.grid2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 14px; }
+.panel { background: var(--panel); border: 1px solid var(--line); border-radius: 8px; padding: 12px 14px; }
+.muted { color: var(--muted); }
+.kind { font-size: 11px; font-weight: 700; padding: 1px 6px; border-radius: 4px; border: 1px solid var(--line); margin-right: 6px; }
+.kind-FACT { color: var(--good); } .kind-ESTIMATE { color: var(--warn); } .kind-INFERENCE { color: var(--muted); }
+.actions { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+.actions form { display: contents; }
+.actions input[type=text], .actions input[type=number] { padding: 6px 8px; border: 1px solid var(--line); border-radius: 6px; background: var(--bg); color: var(--text); min-width: 220px; }
+button { padding: 6px 14px; border-radius: 6px; border: 1px solid var(--line); background: var(--panel); color: var(--text); cursor: pointer; font-weight: 600; }
+button.approve { border-color: var(--good); color: var(--good); } button.reject { border-color: var(--bad); color: var(--bad); } button.watch { border-color: var(--warn); color: var(--warn); }
+button.pre { outline: 2px solid currentColor; }
+pre { white-space: pre-wrap; word-break: break-word; background: var(--bg); padding: 10px; border-radius: 6px; border: 1px solid var(--line); font-size: 12px; max-height: 480px; overflow: auto; }
+ul.tight { margin: 4px 0; padding-left: 18px; }
+@media (max-width: 640px) { .top { flex-wrap: wrap; } }

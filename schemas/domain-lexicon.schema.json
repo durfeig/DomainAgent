@@ -1,0 +1,73 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "properties": {
+    "concepts": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "slug": {
+            "type": "string"
+          },
+          "core_terms": {
+            "minItems": 1,
+            "maxItems": 4,
+            "type": "array",
+            "items": {
+              "type": "string",
+              "pattern": "^[a-z]{2,14}$"
+            }
+          },
+          "alt_nouns": {
+            "maxItems": 14,
+            "type": "array",
+            "items": {
+              "type": "string",
+              "pattern": "^[a-z]{2,12}$"
+            },
+            "description": "Semantic alternatives / related nouns"
+          },
+          "verbs": {
+            "maxItems": 10,
+            "type": "array",
+            "items": {
+              "type": "string",
+              "pattern": "^[a-z]{2,10}$"
+            }
+          },
+          "brandable_roots": {
+            "maxItems": 10,
+            "type": "array",
+            "items": {
+              "type": "string",
+              "pattern": "^[a-z]{3,12}$"
+            },
+            "description": "Short evocative roots, real words preferred"
+          },
+          "avoid": {
+            "maxItems": 10,
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Words to avoid: trademarks, negative connotations"
+          }
+        },
+        "required": [
+          "slug",
+          "core_terms",
+          "alt_nouns",
+          "verbs",
+          "brandable_roots",
+          "avoid"
+        ],
+        "additionalProperties": false
+      }
+    }
+  },
+  "required": [
+    "concepts"
+  ],
+  "additionalProperties": false
+}
